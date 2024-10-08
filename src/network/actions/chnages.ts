@@ -8,8 +8,7 @@ export async function fetchChanges(): Promise<ChangeInfo[]> {
     return [
         {
             date: "2024-08-08",
-            description:
-                "Switched the website over to NextJS in preparation for planned features. Dark mode is enabled automatically based on user preference.",
+            description: "Switched the website over to NextJS in preparation for planned features.",
         },
         {
             date: "2024-08-06",
