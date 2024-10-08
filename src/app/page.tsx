@@ -5,15 +5,11 @@ import { IntroductionSection } from "@/components/sections/introduction-section"
 import { PreferencesSection } from "@/components/sections/preferences-section"
 import { RecommendationsSection } from "@/components/sections/recommendations-section"
 
-import { Metadata } from "next"
+import { getMetadataForPath } from "@/routes"
 
 import { Fragment } from "react"
 
-export const metadata: Metadata = {
-    title: "Simon Robertson",
-    description:
-        "I am a senior software developer (web) with a passion for creating interesting or innovative web-based applications.",
-}
+export const metadata = getMetadataForPath("/")
 
 export default function Page() {
     return (
