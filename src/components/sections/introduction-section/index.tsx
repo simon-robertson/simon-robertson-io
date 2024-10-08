@@ -17,17 +17,17 @@ export function IntroductionSection() {
             <p>
                 I can also work with backend programming languages and have a good amount of
                 experience with PHP, Laravel, and Go. I am trying to forget Java. When it comes to
-                databases, I am comfortable with Mongo and SQL based databases. One of my favourite
-                database services is Turso which is built around SQLite.
+                databases, I am comfortable with Mongo and SQL based databases.
             </p>
             <p>
                 Sprints, sprint planning, standup meetings, stakeholder meetings, epics, stories,
-                tasks, working within teams, and leading teams are things I am comfortable with.
+                tasks, working within teams, and leading teams are all things that I am comfortable
+                with.
             </p>
             <p>
                 I am also a big fan of large language models (GPT is a good example), not for their
                 code completion abilities, but for their potential to improve user experience within
-                web applications. The OpenAI API is very good.
+                web applications.
             </p>
         </PageSection>
     )
