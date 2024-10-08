@@ -17,9 +17,7 @@ export async function RecommendationsSection() {
             <blockquote key={info.source} cite={info.source}>
                 {lineNodes}
                 <nav>
-                    <a href={info.source} target="linkedin">
-                        {info.author}
-                    </a>
+                    <a href={info.source}>{info.author}</a>
                 </nav>
             </blockquote>
         )
