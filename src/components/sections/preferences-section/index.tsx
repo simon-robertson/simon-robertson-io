@@ -4,12 +4,12 @@ export function PreferencesSection() {
     return (
         <PageSection heading="Preferences">
             <p>
-                Even though I am a full-stack developer I have always preferred working with
-                frontend web technologies. React, or something related such as NextJS are my
-                preferred tools for web-based applications. For websites that are mostly static,
-                like this website, I tend to use something simpler such as Vite and vanilla JS/CSS.
+                Even though I am a full-stack developer, I have always preferred working with
+                frontend web technologies. React, or something related such as NextJS, are my
+                preferred tools for web-based applications. Ultimately, it depends on the
+                requirements though. For small, static websites, I tend to reach for Vite and
+                vanilla JavaScript and CSS.
             </p>
-            <p>Ultimately it depends on feature requirements.</p>
         </PageSection>
     )
 }
