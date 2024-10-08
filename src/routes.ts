@@ -11,7 +11,7 @@ export const routes: Route[] = [
         path: "/",
         title: "Simon Robertson",
         description:
-            "A creator of web-based things, with a passion for creating interesting or innovative web-based applications.",
+            "A creator of web-based software, with a passion for creating interesting or innovative web-based applications.",
     },
 ]
 

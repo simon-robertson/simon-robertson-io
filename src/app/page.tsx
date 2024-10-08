@@ -14,7 +14,7 @@ export const metadata = getMetadataForPath("/")
 export default function Page() {
     return (
         <Fragment>
-            <PageHeader heading="A creator of web-based things" />
+            <PageHeader heading="A creator of web-based software" />
             <PageContents>
                 <IntroductionSection />
                 <PreferencesSection />
