@@ -10,6 +10,11 @@ export function PreferencesSection() {
                 requirements though. For small, static websites, I tend to reach for Vite and
                 vanilla JavaScript and CSS.
             </p>
+            <p>
+                When it comes to hosting and database services, I am a fan of Vercel and Turso.
+                Vercel makes website deployment frictionless, even when NextJS is not being used,
+                while Turso provides fast SQLite databases with some very nice features.
+            </p>
         </PageSection>
     )
 }
