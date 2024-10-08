@@ -17,6 +17,14 @@ html {
     background: var(--color-page-background);
 }
 
+@media (prefers-color-scheme: dark) {
+    html {
+        --color-edge: #404040;
+        --color-page-background: #181818;
+        --color-page-foreground: #e0e0e0;
+    }
+}
+
 body,
 dl,
 dt,
