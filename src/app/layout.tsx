@@ -6,6 +6,8 @@ import { Metadata, Viewport } from "next"
 
 import { Inter } from "next/font/google"
 
+import Script from "next/script"
+
 import { ReactNode } from "react"
 
 import "@/globals.css"
@@ -36,6 +38,7 @@ export default function Layout({ children }: Props) {
                 {children}
                 <PageNavigationExternal />
                 <PageFooter />
+                <Script src="/modules/shadows.js" type="module" />
             </body>
         </html>
     )
