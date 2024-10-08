@@ -1,16 +1,27 @@
 {
-	"name": "simon-robertson-io",
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite --port 4040",
-		"build": "vite build",
-		"preview": "vite preview"
-	},
-	"devDependencies": {
-		"@webgpu/types": "latest",
-		"prettier": "^3",
-		"vite": "^5"
-	},
-	"private": true
+    "name": "simon-robertson-io",
+    "version": "0.1.0",
+    "scripts": {
+        "dev": "next dev --port 4040",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "^14",
+        "react": "^18",
+        "react-dom": "^18"
+    },
+    "devDependencies": {
+        "@nomemo/nice-import-sorting": "latest",
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@webgpu/types": "latest",
+        "eslint": "^8",
+        "eslint-config-next": "^14",
+        "prettier": "latest",
+        "typescript": "^5"
+    },
+    "private": true
 }
