@@ -28,8 +28,8 @@ function createShadows() {
         document.body.appendChild(shadow)
 
         setTimeout(() => {
-            shadow.style.height = "40px"
-        }, 100)
+            shadow.style.height = Math.min(bounds.height / 2, 40) + "px"
+        }, 10)
     })
 }
 
