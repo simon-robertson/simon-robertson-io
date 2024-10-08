@@ -11,7 +11,8 @@ import { Fragment } from "react"
 
 export const metadata: Metadata = {
     title: "Simon Robertson",
-    description: "Description",
+    description:
+        "I am a senior software developer (web) with a passion for creating interesting or innovative web-based applications.",
 }
 
 export default function Page() {
