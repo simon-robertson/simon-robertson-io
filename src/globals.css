@@ -104,6 +104,7 @@ blockquote p {
 
 .col-mid.page-header {
     height: 240px;
+    border-right-color: transparent;
     justify-content: flex-end;
 }
 
@@ -121,6 +122,7 @@ blockquote p {
 }
 
 .col-mid.page-navigation-external {
+    border-left-color: transparent;
     justify-content: flex-end;
 }
 
