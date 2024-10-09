@@ -27,7 +27,7 @@ export async function RecommendationsSection() {
         <PageSection heading="Recommendations">
             <p>
                 The following quotes are a few recommendations from LinkedIn that I have received
-                from people I have had the pleasure to work with.
+                from people I have had the pleasure of working with.
             </p>
             {recommendationNodes}
         </PageSection>
