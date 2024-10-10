@@ -2,18 +2,16 @@ function createShadows() {
     /** @type {NodeListOf<HTMLElement>} */
     const sources = document.querySelectorAll("[data-shadow-source]")
 
-    sources.forEach((source) => {
-        const bounds = source.getBoundingClientRect()
-        const shadow = document.createElement("div")
+    /** @type {HTMLElement[]} */
+    const shadows = []
 
+    /**
+     * @param {HTMLElement} source
+     * @param {HTMLElement} shadow
+     * @param {DOMRect} bounds
+     */
+    const setShadowPosition = (source, shadow, bounds) => {
         shadow.style.top = bounds.bottom + window.scrollY + "px"
-        shadow.style.height = "0"
-        shadow.style.position = "absolute"
-        shadow.style.pointerEvents = "none"
-        shadow.style.backgroundRepeat = "norepeat"
-        shadow.style.backgroundSize = "cover"
-        shadow.style.opacity = "0.08"
-        shadow.style.transition = "height 0.5s ease-in-out"
 
         if (source.dataset.shadowSource === "left") {
             shadow.style.left = bounds.left + "px"
@@ -24,13 +22,52 @@ function createShadows() {
             shadow.style.right = bounds.left + "px"
             shadow.style.backgroundImage = "url('/vectors/triangle-top-left.svg')"
         }
+    }
+
+    /**
+     * @param {HTMLElement} shadow
+     * @param {DOMRect} bounds
+     */
+    const setShadowHeight = (shadow, bounds) => {
+        shadow.style.height = Math.min(bounds.height / 2, 40) + "px"
+    }
+
+    sources.forEach((source) => {
+        const bounds = source.getBoundingClientRect()
+        const shadow = document.createElement("div")
+
+        shadows.push(shadow)
+
+        shadow.style.height = "0"
+        shadow.style.position = "absolute"
+        shadow.style.pointerEvents = "none"
+        shadow.style.backgroundRepeat = "norepeat"
+        shadow.style.backgroundSize = "cover"
+        shadow.style.opacity = "0.08"
+        shadow.style.transition = "height 0.5s ease-in-out"
+
+        setShadowPosition(source, shadow, bounds)
 
         document.body.appendChild(shadow)
 
         setTimeout(() => {
-            shadow.style.height = Math.min(bounds.height / 2, 40) + "px"
+            setShadowHeight(shadow, bounds)
         }, 10)
     })
+
+    window.addEventListener(
+        "resize",
+        () => {
+            sources.forEach((source, index) => {
+                const bounds = source.getBoundingClientRect()
+                const shadow = shadows[index]
+
+                setShadowPosition(source, shadow, bounds)
+                setShadowHeight(shadow, bounds)
+            })
+        },
+        { passive: true },
+    )
 }
 
 createShadows()
