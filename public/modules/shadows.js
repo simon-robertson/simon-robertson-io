@@ -1,4 +1,6 @@
 function createShadows() {
+    const dark = window.matchMedia("(prefers-color-scheme:dark)").matches
+
     /** @type {NodeListOf<HTMLElement>} */
     const sources = document.querySelectorAll("[data-shadow-source]")
 
@@ -11,7 +13,7 @@ function createShadows() {
      * @param {DOMRect} bounds
      */
     const setShadowPosition = (source, shadow, bounds) => {
-        shadow.style.top = bounds.bottom + window.scrollY + "px"
+        shadow.style.top = bounds.bottom + window.scrollY + 2 + "px"
 
         if (source.dataset.shadowSource === "left") {
             shadow.style.left = bounds.left + "px"
@@ -43,7 +45,7 @@ function createShadows() {
         shadow.style.pointerEvents = "none"
         shadow.style.backgroundRepeat = "norepeat"
         shadow.style.backgroundSize = "cover"
-        shadow.style.opacity = "0.08"
+        shadow.style.opacity = dark ? "0.25" : "0.08"
         shadow.style.transition = "height 0.5s ease-in-out"
 
         setShadowPosition(source, shadow, bounds)

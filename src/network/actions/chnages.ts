@@ -8,7 +8,7 @@ export async function fetchChanges(): Promise<ChangeInfo[]> {
     return [
         {
             date: "2024-08-10",
-            description: "Improved the UI.",
+            description: "Improved the UI and added dark mode.",
         },
         {
             date: "2024-08-08",
