@@ -1,3 +1,6 @@
+import { PlayArrow } from "@/components/icons/play-arrow"
+import { Stars } from "@/components/icons/stars"
+
 import { PageSection } from "@/components/page-section"
 
 import { fetchRecommendations } from "@/network/actions/recommendations"
@@ -17,14 +20,17 @@ export async function RecommendationsSection() {
             <blockquote key={info.source} cite={info.source}>
                 {lineNodes}
                 <nav>
-                    <a href={info.source}>{info.author}</a>
+                    <a className="with-arrow" href={info.source}>
+                        <PlayArrow />
+                        {info.author}
+                    </a>
                 </nav>
             </blockquote>
         )
     })
 
     return (
-        <PageSection heading="Recommendations">
+        <PageSection heading="Recommendations" edge={<Stars />}>
             <p>
                 The following quotes are a few recommendations from LinkedIn that I have received
                 from people I have had the pleasure of working with.

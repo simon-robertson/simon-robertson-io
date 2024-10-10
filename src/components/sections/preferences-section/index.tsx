@@ -1,8 +1,10 @@
+import { Recommend } from "@/components/icons/recommend"
+
 import { PageSection } from "@/components/page-section"
 
 export function PreferencesSection() {
     return (
-        <PageSection heading="Preferences">
+        <PageSection heading="Preferences" edge={<Recommend />}>
             <p>
                 Even though I am a full-stack developer, I have always preferred working with
                 frontend web technologies. React, or something related such as NextJS, are my
