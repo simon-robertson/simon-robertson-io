@@ -20,7 +20,7 @@ export async function RecommendationsSection() {
             <blockquote key={info.source} cite={info.source}>
                 {lineNodes}
                 <nav>
-                    <a className="with-arrow" href={info.source}>
+                    <a className="with-icon" href={info.source}>
                         <PlayArrow />
                         {info.author}
                     </a>

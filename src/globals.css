@@ -2,6 +2,7 @@ html {
     --color-edge: #c0c0c0;
     --color-page-background: #ffffff;
     --color-page-foreground: #000000;
+    --color-primary: #d71282;
     --space-1: 10px;
     --space-2: calc(var(--space-1) * 2);
     --space-3: calc(var(--space-1) * 3);
@@ -61,14 +62,15 @@ a {
     text-underline-offset: 2px;
 }
 
-a.with-arrow {
+a.with-icon {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     gap: 2px;
 }
 
-a.with-arrow svg {
+a.with-icon svg {
+    fill: var(--color-primary);
     width: 20px;
     height: 20px;
 }
@@ -119,6 +121,7 @@ figure img {
 }
 
 .col-min.edge svg {
+    fill: var(--color-primary);
     width: 48px;
     height: 48px;
 }
