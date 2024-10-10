@@ -188,10 +188,15 @@ figure img {
 .col-mid-max {
     grid-column: 2 / 4;
     grid-row: 1;
+    box-sizing: border-box;
 }
 
 .col-mid-max.background {
     z-index: -1;
+}
+
+.col-mid-max.background canvas {
+    background-color: var(--color-page-background);
 }
 
 .col-max {

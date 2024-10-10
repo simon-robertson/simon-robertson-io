@@ -38,6 +38,7 @@ export default function Layout({ children }: Props) {
                 {children}
                 <PageNavigationExternal />
                 <PageFooter />
+                <Script src="/modules/header.js" type="module" crossOrigin="anonymous" />
                 <Script src="/modules/shadows.js" type="module" crossOrigin="anonymous" />
             </body>
         </html>
