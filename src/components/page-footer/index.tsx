@@ -1,4 +1,4 @@
-import { fetchChanges } from "@/network/actions/chnages"
+import { fetchChanges } from "@/network/actions/changes"
 
 import { Fragment } from "react"
 
