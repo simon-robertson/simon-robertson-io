@@ -17,8 +17,17 @@ export async function PageFooter() {
     return (
         <aside className="row no-border">
             <div className="col-mid page-footer">
-                <h3>Changes</h3>
-                <dl>{changeNodes}</dl>
+                <div>
+                    <h3>Contact</h3>
+                    <dl>
+                        <dt>Email</dt>
+                        <dd>hello@simon-robertson.io</dd>
+                    </dl>
+                </div>
+                <div>
+                    <h3>Changes</h3>
+                    <dl>{changeNodes}</dl>
+                </div>
             </div>
         </aside>
     )

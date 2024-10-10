@@ -15,6 +15,13 @@ export const routes: Route[] = [
         description:
             "A creator of web-based software, with a passion for creating interesting or innovative web-based applications.",
     },
+    // {
+    //     path: "/showcase",
+    //     title: "Showcase",
+    //     parent: "",
+    //     description:
+    //         "A creator of web-based software, with a passion for creating interesting or innovative web-based applications.",
+    // },
 ]
 
 export function getMetadataForPath(path: string): Metadata {

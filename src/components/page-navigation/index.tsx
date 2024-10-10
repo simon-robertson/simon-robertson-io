@@ -4,9 +4,15 @@ export function PageNavigation() {
     const routes = getBaseRoutes()
 
     const linkNodes = routes.map((route) => {
+        let title = route.title
+
+        if (route.path === "/") {
+            title = "Home"
+        }
+
         return (
             <a key={route.path} href={route.path}>
-                {route.title}
+                {title}
             </a>
         )
     })

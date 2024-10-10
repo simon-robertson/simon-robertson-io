@@ -62,14 +62,15 @@ a {
 }
 
 a.with-arrow {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     align-items: center;
+    gap: 2px;
 }
 
 a.with-arrow svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 }
 
 blockquote {
@@ -167,8 +168,18 @@ figure img {
 }
 
 .col-mid.page-footer {
-    font-size: 0.9rem;
     padding-bottom: var(--space-5);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-3);
+    font-size: 0.9rem;
+}
+
+.col-mid.page-footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
 }
 
 .col-mid-max {
@@ -193,6 +204,10 @@ figure img {
 
     .col-mid.page-navigation {
         gap: var(--space-3);
+    }
+
+    .col-mid.page-footer {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
