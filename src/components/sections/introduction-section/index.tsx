@@ -1,10 +1,10 @@
-import { SentimentSatisfied } from "@/components/icons/sentiment-satisfied"
+import { ArrowRightCircle } from "@/components/icons/arrow-right-circle"
 
 import { PageSection } from "@/components/page-section"
 
 export function IntroductionSection() {
     return (
-        <PageSection heading="Hello" edge={<SentimentSatisfied />}>
+        <PageSection heading="Hello" edge={<ArrowRightCircle />}>
             <p>
                 Welcome to my personal website. This is a new website and is still evolving, I am
                 aiming to add code related articles and experimental apps/tools over time.
