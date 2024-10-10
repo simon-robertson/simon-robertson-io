@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 400;
 }
 
@@ -61,6 +61,17 @@ a {
     text-underline-offset: 2px;
 }
 
+a.with-arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a.with-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
 blockquote {
     margin: 0;
     padding: var(--space-2);
@@ -71,6 +82,15 @@ blockquote {
 
 blockquote p {
     font-style: italic;
+}
+
+figure {
+    margin: 0;
+}
+
+figure img {
+    width: 100%;
+    max-width: calc(738px / 2);
 }
 
 .row {
@@ -87,6 +107,29 @@ blockquote p {
 .col-min {
     grid-column: 1;
     grid-row: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-min.edge {
+    padding: var(--space-2);
+    align-items: flex-end;
+    display: none;
+}
+
+.col-min.edge svg {
+    width: 48px;
+    height: 48px;
+}
+
+.col-min.edge.smaller {
+    padding: var(--space-3);
+}
+
+.col-min.edge.smaller svg {
+    width: 32px;
+    height: 32px;
+    transform: translateX(4px) translateY(-4px);
 }
 
 .col-mid {
@@ -102,6 +145,7 @@ blockquote p {
     height: 240px;
     border-right-color: transparent;
     justify-content: flex-end;
+    gap: unset;
 }
 
 .col-mid.page-navigation {
@@ -149,5 +193,11 @@ blockquote p {
 
     .col-mid.page-navigation {
         gap: var(--space-3);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .col-min.edge {
+        display: flex;
     }
 }
