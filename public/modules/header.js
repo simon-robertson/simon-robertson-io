@@ -76,11 +76,6 @@ function main() {
         points[i] = point
     }
 
-    const css = window.getComputedStyle(document.documentElement)
-    const colorBackground = css.getPropertyValue("--color-page-background")
-    const colorEdge = css.getPropertyValue("--color-edge")
-    const colorPrimary = css.getPropertyValue("--color-primary")
-
     state.container = container
     state.canvas = canvas
     state.context = context
@@ -88,13 +83,31 @@ function main() {
     state.points = points
     state.time = 0
     state.paused = true
-    state.colorBackground = colorBackground
-    state.colorEdge = colorEdge
-    state.colorPrimary = colorPrimary
 
+    monitorColorScheme()
     monitorSize()
     monitorVisibility()
     render()
+}
+
+/**
+ * @returns {void}
+ */
+function monitorColorScheme() {
+    const updateColors = () => {
+        const css = window.getComputedStyle(document.documentElement)
+        const colorBackground = css.getPropertyValue("--color-page-background")
+        const colorEdge = css.getPropertyValue("--color-edge")
+        const colorPrimary = css.getPropertyValue("--color-primary")
+
+        state.colorBackground = colorBackground
+        state.colorEdge = colorEdge
+        state.colorPrimary = colorPrimary
+    }
+
+    window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change", updateColors)
+
+    updateColors()
 }
 
 /**

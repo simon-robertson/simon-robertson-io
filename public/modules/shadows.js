@@ -13,7 +13,7 @@ function createShadows() {
      * @param {DOMRect} bounds
      */
     const setShadowPosition = (source, shadow, bounds) => {
-        shadow.style.top = bounds.bottom + window.scrollY + 2 + "px"
+        shadow.style.top = bounds.bottom + window.scrollY + 1 + "px"
 
         if (source.dataset.shadowSource === "left") {
             shadow.style.left = bounds.left + "px"
@@ -70,6 +70,14 @@ function createShadows() {
         },
         { passive: true },
     )
+
+    const prefersDarkColorScheme = window.matchMedia("(prefers-color-scheme:dark)")
+
+    prefersDarkColorScheme.addEventListener("change", () => {
+        shadows.forEach((shadow) => {
+            shadow.style.opacity = prefersDarkColorScheme.matches ? "0.25" : "0.08"
+        })
+    })
 }
 
 createShadows()
