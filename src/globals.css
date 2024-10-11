@@ -27,6 +27,11 @@ html {
     }
 }
 
+::selection {
+    color: var(--color-page-background);
+    background: var(--color-page-foreground);
+}
+
 body,
 dl,
 dt,
