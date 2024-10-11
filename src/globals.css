@@ -74,19 +74,12 @@ dd + dt {
 a {
     color: inherit;
     text-underline-offset: 2px;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 2px;
 }
 
-a.with-icon {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2px;
-}
-
-a.with-icon svg {
-    fill: var(--color-primary);
-    width: 20px;
-    height: 20px;
+a:hover {
+    text-decoration-color: var(--color-page-foreground);
 }
 
 blockquote {

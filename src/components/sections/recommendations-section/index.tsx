@@ -1,4 +1,3 @@
-import { PlayArrow } from "@/components/icons/play-arrow"
 import { Stars } from "@/components/icons/stars"
 
 import { PageSection } from "@/components/page-section"
@@ -20,10 +19,7 @@ export async function RecommendationsSection() {
             <blockquote key={info.source} cite={info.source}>
                 {lineNodes}
                 <nav>
-                    <a className="with-icon" href={info.source}>
-                        <PlayArrow />
-                        {info.author}
-                    </a>
+                    <a href={info.source}>{info.author}</a>
                 </nav>
             </blockquote>
         )
