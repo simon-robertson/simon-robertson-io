@@ -5,11 +5,12 @@ import { IntroductionSection } from "@/components/sections/introduction-section"
 import { PreferencesSection } from "@/components/sections/preferences-section"
 import { RecommendationsSection } from "@/components/sections/recommendations-section"
 
-import { getMetadataForPage } from "@/network/database"
+import { getPage } from "@/network/database"
+
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
 
 import { Fragment } from "react"
-
-export const metadata = getMetadataForPage("/")
 
 export default function Page() {
     return (
@@ -22,4 +23,18 @@ export default function Page() {
             </PageContents>
         </Fragment>
     )
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+    const page = await getPage("/")
+
+    if (page === null) {
+        notFound()
+    }
+
+    return {
+        title: page.title,
+        description: page.description,
+        keywords: page.keywords,
+    }
 }

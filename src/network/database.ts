@@ -2,7 +2,11 @@ import { TURSO_DATABASE, TURSO_TOKEN } from "@/environment"
 
 import { Client, ResultSet, createClient } from "@libsql/client"
 
-import { Metadata } from "next"
+type ArticleRecord = {
+    readonly id: number
+    readonly path: string
+    readonly content: string
+}
 
 type ChangeRecord = {
     readonly id: number
@@ -56,6 +60,19 @@ function normalizeResults<T>({ columns, rows }: ResultSet): T[] {
     return output
 }
 
+export async function getArticle(path: string): Promise<ArticleRecord | null> {
+    const statement = `SELECT * FROM "articles" WHERE "path" = ? LIMIT 1`
+
+    const results = await getClientInstance().execute({
+        sql: statement,
+        args: [path],
+    })
+
+    const normalized = await normalizeResults<ArticleRecord>(results)
+
+    return normalized[0] ?? null
+}
+
 export async function getChanges(): Promise<ChangeRecord[]> {
     const statement = `SELECT * FROM "changes" ORDER BY "id" DESC`
 
@@ -64,7 +81,7 @@ export async function getChanges(): Promise<ChangeRecord[]> {
     return normalizeResults(results)
 }
 
-export async function getMetadataForPage(path: string): Promise<Metadata> {
+export async function getPage(path: string): Promise<PageRecord | null> {
     const statement = `SELECT * FROM "pages" WHERE "path" = ? LIMIT 1`
 
     const results = await getClientInstance().execute({
@@ -72,13 +89,9 @@ export async function getMetadataForPage(path: string): Promise<Metadata> {
         args: [path],
     })
 
-    const record = normalizeResults<PageRecord>(results)[0]
+    const normalized = await normalizeResults<PageRecord>(results)
 
-    return {
-        title: record.title,
-        description: record.description,
-        keywords: record.keywords,
-    }
+    return normalized[0] ?? null
 }
 
 export async function getPages(): Promise<PageRecord[]> {

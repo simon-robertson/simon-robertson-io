@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 type Props = {
-    readonly heading: string
+    readonly heading?: string
     readonly headingLink?: string
     readonly description?: string
     readonly children: ReactNode
@@ -26,14 +26,16 @@ export function PageSectionArticle({
         edgeNode = <div className="col-min edge">{edge}</div>
     }
 
-    if (headingLink !== undefined) {
-        headingNode = (
-            <h2>
-                <a href={headingLink}>{heading}</a>
-            </h2>
-        )
-    } else {
-        headingNode = <h2>{heading}</h2>
+    if (heading !== undefined) {
+        if (headingLink !== undefined) {
+            headingNode = (
+                <h2>
+                    <a href={headingLink}>{heading}</a>
+                </h2>
+            )
+        } else {
+            headingNode = <h2>{heading}</h2>
+        }
     }
 
     if (description !== undefined) {
