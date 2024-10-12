@@ -1,17 +1,17 @@
-import { getBaseRoutes } from "@/routes"
+import { getPagesByGroup } from "@/network/database"
 
-export function PageNavigation() {
-    const routes = getBaseRoutes()
+export async function PageNavigation() {
+    const pages = await getPagesByGroup("root")
 
-    const linkNodes = routes.map((route) => {
-        let title = route.title
+    const linkNodes = pages.map((page) => {
+        let title = page.title
 
-        if (route.path === "/") {
+        if (page.path === "/") {
             title = "Home"
         }
 
         return (
-            <a key={route.path} href={route.path}>
+            <a key={page.path} href={page.path}>
                 {title}
             </a>
         )

@@ -1,15 +1,15 @@
-import { fetchChanges } from "@/network/actions/changes"
+import { getChanges } from "@/network/database"
 
 import { Fragment } from "react"
 
 export async function PageFooter() {
-    const changes = await fetchChanges()
+    const changes = await getChanges()
 
-    const changeNodes = changes.map((info) => {
+    const changeNodes = changes.map((record) => {
         return (
-            <Fragment key={info.date}>
-                <dt>{info.date}</dt>
-                <dd>{info.description}</dd>
+            <Fragment key={record.date}>
+                <dt>{record.date}</dt>
+                <dd>{record.content}</dd>
             </Fragment>
         )
     })

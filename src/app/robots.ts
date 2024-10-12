@@ -1,4 +1,4 @@
-import { constants } from "@/constants"
+import { HOST } from "@/environment"
 
 import { MetadataRoute } from "next"
 
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: "*",
             allow: "/",
         },
-        sitemap: constants.host + "/sitemap.xml",
+        sitemap: HOST + "/sitemap.xml",
     }
 }

@@ -2,24 +2,17 @@ import { Stars } from "@/components/icons/stars"
 
 import { PageSection } from "@/components/page-section"
 
-import { fetchRecommendations } from "@/network/actions/recommendations"
+import { getRecommendations } from "@/network/database"
 
 export async function RecommendationsSection() {
-    const recommendations = await fetchRecommendations()
+    const recommendations = await getRecommendations()
 
-    const recommendationNodes = recommendations.map((info) => {
-        const lineNodes = info.contents
-            .trim()
-            .split(/\r?\n/)
-            .map((line, index) => {
-                return <p key={index}>{line.trim()}</p>
-            })
-
+    const recommendationNodes = recommendations.map((record) => {
         return (
-            <blockquote key={info.source} cite={info.source}>
-                {lineNodes}
+            <blockquote key={record.source} cite={record.source}>
+                <div dangerouslySetInnerHTML={{ __html: record.content }} />
                 <nav>
-                    <a href={info.source}>{info.author}</a>
+                    <a href={record.source}>{record.author}</a>
                 </nav>
             </blockquote>
         )

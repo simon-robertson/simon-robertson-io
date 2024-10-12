@@ -1,15 +1,18 @@
-import { constants } from "@/constants"
-import { routes } from "@/routes"
+import { HOST } from "@/environment"
+
+import { getPages } from "@/network/database"
 
 import { MetadataRoute } from "next"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const now = new Date()
 
-    return routes.map((route) => {
+    const pages = await getPages()
+
+    return pages.map((page) => {
         return {
-            url: constants.host + route.path,
-            priority: 1.0 - (route.path.split("/").length - 2),
+            url: HOST + page.path,
+            priority: 1.0 - (page.path.split("/").length - 2) * 0.2,
             lastModified: now,
             changeFrequency: "weekly",
         }

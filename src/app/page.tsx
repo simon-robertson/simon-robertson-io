@@ -5,11 +5,11 @@ import { IntroductionSection } from "@/components/sections/introduction-section"
 import { PreferencesSection } from "@/components/sections/preferences-section"
 import { RecommendationsSection } from "@/components/sections/recommendations-section"
 
-import { getMetadataForPath } from "@/routes"
+import { getMetadataForPage } from "@/network/database"
 
 import { Fragment } from "react"
 
-export const metadata = getMetadataForPath("/")
+export const metadata = getMetadataForPage("/")
 
 export default function Page() {
     return (

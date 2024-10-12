@@ -53,6 +53,13 @@ h2 {
     font-weight: 400;
 }
 
+h2 + em {
+    margin-top: var(--space-1);
+    font-size: 0.8rem;
+    font-style: normal;
+    display: inline-block;
+}
+
 h3 {
     font-size: 1.2rem;
     font-weight: 400;
@@ -90,6 +97,12 @@ blockquote {
     gap: var(--space-2);
 }
 
+blockquote > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
 blockquote p {
     font-style: italic;
 }
@@ -101,6 +114,22 @@ figure {
 figure img {
     width: 100%;
     max-width: calc(738px / 2);
+}
+
+footer.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-1);
+    font-size: 0.8rem;
+}
+
+footer.tags .tag {
+    padding: 4px 6px;
+    border: 1px solid var(--color-edge);
+    border-radius: 4px;
+    display: inline-block;
 }
 
 .row {
