@@ -2,6 +2,8 @@ import { PageFooter } from "@/components/page-footer"
 import { PageNavigation } from "@/components/page-navigation"
 import { PageNavigationExternal } from "@/components/page-navigation-external"
 
+import { Analytics } from "@vercel/analytics/react"
+
 import { Metadata, Viewport } from "next"
 
 import { Inter } from "next/font/google"
@@ -38,6 +40,7 @@ export default function Layout({ children }: Props) {
                 {children}
                 <PageNavigationExternal />
                 <PageFooter />
+                <Analytics />
                 <Script src="/modules/header.js" type="module" crossOrigin="anonymous" />
                 <Script src="/modules/shadows.js" type="module" crossOrigin="anonymous" />
             </body>
