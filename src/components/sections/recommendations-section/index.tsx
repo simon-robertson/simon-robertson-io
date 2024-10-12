@@ -10,7 +10,7 @@ export async function RecommendationsSection() {
     const recommendationNodes = recommendations.map((record) => {
         return (
             <blockquote key={record.source} cite={record.source}>
-                <div dangerouslySetInnerHTML={{ __html: record.content }} />
+                <div className="content" dangerouslySetInnerHTML={{ __html: record.content }} />
                 <nav>
                     <a href={record.source}>{record.author}</a>
                 </nav>
