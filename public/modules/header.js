@@ -59,6 +59,9 @@ function main() {
     /** @type {Point[]} */
     const points = []
 
+    const randomizeAxis = Math.random()
+    const randomizeDirection = Math.random()
+
     for (let i = 0; i < 10; i++) {
         const point = {
             x: 0,
@@ -70,8 +73,14 @@ function main() {
 
         randomizePointTargetPosition(point)
 
-        point.x = point.targetX + 1
+        point.x = point.targetX
         point.y = point.targetY
+
+        if (randomizeAxis < 0.5) {
+            point.x += randomizeDirection < 0.5 ? -1 : 1
+        } else {
+            point.y += randomizeDirection < 0.5 ? -1 : 1
+        }
 
         points[i] = point
     }
