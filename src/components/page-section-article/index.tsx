@@ -58,10 +58,12 @@ export function PageSectionArticle({
         <article className="row section">
             {edgeNode}
             <div className="col-mid">
-                <header className="section-header">
-                    {headingNode}
-                    {descriptionNode}
-                </header>
+                {headingNode ? (
+                    <header className="section-header">
+                        {headingNode}
+                        {descriptionNode}
+                    </header>
+                ) : null}
                 {children}
                 {footerNode}
             </div>
