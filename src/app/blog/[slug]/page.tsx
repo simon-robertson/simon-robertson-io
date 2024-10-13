@@ -3,7 +3,7 @@ import { PageContents } from "@/components/page-contents"
 import { PageHeader } from "@/components/page-header"
 import { PageSectionArticle } from "@/components/page-section-article"
 
-import { getArticle, getPage } from "@/network/database"
+import { getArticle, getPage, getPagesByGroup } from "@/network/database"
 
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -50,4 +50,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: page.description,
         keywords: page.keywords,
     }
+}
+
+export async function generateStaticParams(): Promise<Props["params"][]> {
+    const pages = await getPagesByGroup("blog", true)
+
+    return pages.map((page) => {
+        return {
+            slug: page.path.substring(6),
+        }
+    })
 }
