@@ -1,10 +1,10 @@
 import { Content } from "@/components/content"
 
-import { HOST } from "@/environment"
-
 import { parseMarkdown } from "@/helpers/markdown"
 
-import { notFound } from "next/navigation"
+import fs from "node:fs"
+
+import path from "node:path"
 
 type Props = {
     /**
@@ -17,14 +17,9 @@ type Props = {
 }
 
 export async function Markdown({ source }: Props) {
-    const response = await fetch(HOST + "/source" + source + ".md")
-
-    if (response.status >= 400) {
-        return notFound()
-    }
-
-    const contents = await response.text()
-    const parsed = await parseMarkdown(contents)
+    const sourcePath = path.join(process.cwd(), "public/source" + source + ".md")
+    const sourceContents = fs.readFileSync(sourcePath)
+    const parsed = await parseMarkdown(sourceContents.toString())
 
     return <Content content={parsed} />
 }
