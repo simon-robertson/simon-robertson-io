@@ -1,4 +1,4 @@
-import { TURSO_DATABASE, TURSO_TOKEN } from "@/environment"
+import { IS_DEVELOPMENT, TURSO_DATABASE, TURSO_TOKEN } from "@/environment"
 
 import { Client, ResultSet, createClient } from "@libsql/client"
 
@@ -21,6 +21,7 @@ type PageRecord = {
     readonly title: string
     readonly description: string
     readonly keywords: string
+    readonly published: number
 }
 
 type RecommendationRecord = {
@@ -82,11 +83,11 @@ export async function getChanges(): Promise<ChangeRecord[]> {
 }
 
 export async function getPage(path: string): Promise<PageRecord | null> {
-    const statement = `SELECT * FROM "pages" WHERE "path" = ? LIMIT 1`
+    const statement = `SELECT * FROM "pages" WHERE "path" = ? AND "published" > ? LIMIT 1`
 
     const results = await getClientInstance().execute({
         sql: statement,
-        args: [path],
+        args: [path, IS_DEVELOPMENT ? -1 : 0],
     })
 
     const normalized = await normalizeResults<PageRecord>(results)
@@ -95,9 +96,12 @@ export async function getPage(path: string): Promise<PageRecord | null> {
 }
 
 export async function getPages(): Promise<PageRecord[]> {
-    const statement = `SELECT * FROM "pages" ORDER BY "id" ASC`
+    const statement = `SELECT * FROM "pages" WHERE "published" > ? ORDER BY "id" ASC`
 
-    const results = await getClientInstance().execute(statement)
+    const results = await getClientInstance().execute({
+        sql: statement,
+        args: [IS_DEVELOPMENT ? -1 : 0],
+    })
 
     return normalizeResults(results)
 }
@@ -106,11 +110,11 @@ export async function getPagesByGroup(
     group: string,
     descending: boolean = false,
 ): Promise<PageRecord[]> {
-    const statement = `SELECT * FROM "pages" WHERE "group" = ? ORDER BY "id" ${descending ? "DESC" : "ASC"}`
+    const statement = `SELECT * FROM "pages" WHERE "group" = ? AND "published" > ? ORDER BY "id" ${descending ? "DESC" : "ASC"}`
 
     const results = await getClientInstance().execute({
         sql: statement,
-        args: [group],
+        args: [group, IS_DEVELOPMENT ? -1 : 0],
     })
 
     return normalizeResults(results)
