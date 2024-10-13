@@ -1,9 +1,9 @@
-import { Content } from "@/components/content"
+import { Markdown } from "@/components/markdown"
 import { PageContents } from "@/components/page-contents"
 import { PageHeader } from "@/components/page-header"
 import { PageSectionArticle } from "@/components/page-section-article"
 
-import { getArticle, getPage, getPagesByGroup } from "@/network/database"
+import { getPage, getPagesByGroup } from "@/network/database"
 
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -20,9 +20,8 @@ export default async function Page({ params }: Props) {
     const path = "/blog/" + params.slug
 
     const page = await getPage(path)
-    const article = await getArticle(path)
 
-    if (page === null || article === null) {
+    if (page === null) {
         notFound()
     }
 
@@ -31,7 +30,7 @@ export default async function Page({ params }: Props) {
             <PageHeader heading={page.title} />
             <PageContents>
                 <PageSectionArticle tags={page.keywords.split(",").map((value) => value.trim())}>
-                    <Content content={article.content} />
+                    <Markdown source={path} />
                 </PageSectionArticle>
             </PageContents>
         </Fragment>
