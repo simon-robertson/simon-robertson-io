@@ -132,21 +132,26 @@ footer.tags .tag {
     gap: var(--space-2);
 }
 
+.content h1,
+.content h2,
 .content h3 {
     padding-top: var(--space-3);
 }
 
-.content pre {
-    margin: 0;
+.content .code-block {
     padding: var(--space-2);
     border-left: 2px solid var(--color-primary);
-    overflow: auto;
+    overflow-x: auto;
+}
+
+.content .code-block pre {
+    margin: 0;
     white-space: normal;
     font-size: 0.9rem;
     line-height: 1.4rem;
 }
 
-.content pre code {
+.content .code-block code {
     display: block;
     white-space: pre;
 }
