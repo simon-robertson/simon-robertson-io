@@ -16,7 +16,7 @@ export default async function Page() {
         notFound()
     }
 
-    const blogPages = await getPagesByGroup("blog")
+    const blogPages = await getPagesByGroup("blog", true)
     const blogNodes = blogPages.map((record) => {
         return (
             <PageSectionArticle

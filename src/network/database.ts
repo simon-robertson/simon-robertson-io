@@ -102,8 +102,11 @@ export async function getPages(): Promise<PageRecord[]> {
     return normalizeResults(results)
 }
 
-export async function getPagesByGroup(group: string): Promise<PageRecord[]> {
-    const statement = `SELECT * FROM "pages" WHERE "group" = ? ORDER BY "id" ASC`
+export async function getPagesByGroup(
+    group: string,
+    descending: boolean = false,
+): Promise<PageRecord[]> {
+    const statement = `SELECT * FROM "pages" WHERE "group" = ? ORDER BY "id" ${descending ? "DESC" : "ASC"}`
 
     const results = await getClientInstance().execute({
         sql: statement,
