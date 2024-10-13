@@ -1,7 +1,7 @@
 type Props = {
-    readonly content: string
+    readonly source: string
 }
 
-export function Content({ content }: Props) {
+export function Content({ source: content }: Props) {
     return <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
 }

@@ -21,5 +21,5 @@ export async function Markdown({ source }: Props) {
     const sourceContents = fs.readFileSync(sourcePath)
     const parsed = await parseMarkdown(sourceContents.toString())
 
-    return <Content content={parsed} />
+    return <Content source={parsed} />
 }

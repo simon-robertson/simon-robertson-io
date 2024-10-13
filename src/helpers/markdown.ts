@@ -1,6 +1,4 @@
 export async function parseMarkdown(contents: string): Promise<string> {
-    const time = Date.now()
-
     const source: string[] = contents.trim().split(/\r?\n/)
     const output: string[] = []
 
@@ -98,8 +96,6 @@ export async function parseMarkdown(contents: string): Promise<string> {
         output[outputIndex++] = line.trimStart()
         output[outputIndex++] = "</p>"
     }
-
-    console.log("Processing time:", Date.now() - time)
 
     return output.join("")
 }
