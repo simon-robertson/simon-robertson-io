@@ -8,7 +8,7 @@ import path from "node:path"
 
 type Props = {
     /**
-     * The URL of the source markdown file, within the "/source" directory,
+     * The URL of the source markdown file, within the "/data" directory,
      * without the file extension.
      *
      * Example "/blog/markdown-test"
@@ -17,7 +17,7 @@ type Props = {
 }
 
 export async function Markdown({ source }: Props) {
-    const sourcePath = path.join(process.cwd(), "public/source" + source + ".md")
+    const sourcePath = path.join(process.cwd(), "data", source + ".md")
     const sourceContents = fs.readFileSync(sourcePath)
     const parsed = await parseMarkdown(sourceContents.toString())
 
