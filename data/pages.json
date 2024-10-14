@@ -1,0 +1,23 @@
+[
+    {
+        "path": "/",
+        "group": "root",
+        "title": "Simon Robertson",
+        "description": "A creator of web-based software, with a passion for creating interesting or innovative web-based applications.",
+        "keywords": []
+    },
+    {
+        "path": "/blog",
+        "group": "root",
+        "title": "Blog",
+        "description": "A place where I share my programming experiences, thoughts, and opinions.",
+        "keywords": []
+    },
+    {
+        "path": "/blog/on-demand-translations",
+        "group": "blog",
+        "title": "On-Demand Translations",
+        "description": "How I solved the problem of supporting multiple spoken languages, across multiple applications, within two weeks for Shift Platform Ltd.",
+        "keywords": ["GPT", "Laravel", "OpenAI", "PHP"]
+    }
+]

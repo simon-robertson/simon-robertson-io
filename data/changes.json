@@ -1,0 +1,18 @@
+[
+    {
+        "date": "2024-08-06",
+        "content": ["Released the initial version of the website."]
+    },
+    {
+        "date": "2024-08-08",
+        "content": ["Switched the website over to NextJS in preparation for planned features."]
+    },
+    {
+        "date": "2024-08-10",
+        "content": ["Improved the UI and added dark mode."]
+    },
+    {
+        "date": "2024-08-12",
+        "content": ["Moved dynamic contents to a Turso database. Enabled the blog."]
+    }
+]
