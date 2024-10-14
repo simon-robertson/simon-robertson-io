@@ -1,7 +1,7 @@
-import { getPagesByGroup } from "@/network/database"
+import { fetchPagesByGroup } from "@/system/data"
 
 export async function PageNavigation() {
-    const pages = await getPagesByGroup("root")
+    const pages = await fetchPagesByGroup("root")
 
     const linkNodes = pages.map((page) => {
         let title = page.title

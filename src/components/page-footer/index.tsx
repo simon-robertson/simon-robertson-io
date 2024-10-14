@@ -1,18 +1,24 @@
-import { getChanges } from "@/network/database"
+import { fetchChanges } from "@/system/data"
 
 import { Fragment } from "react"
 
 export async function PageFooter() {
-    const changes = await getChanges()
+    const changes = await fetchChanges()
 
-    const changeNodes = changes.map((record) => {
-        return (
-            <Fragment key={record.date}>
-                <dt>{record.date}</dt>
-                <dd>{record.content}</dd>
-            </Fragment>
-        )
-    })
+    const changeNodes = changes
+        .map((record) => {
+            const paragraphNodes = record.content.map((content) => {
+                return <p key={content}>{content}</p>
+            })
+
+            return (
+                <Fragment key={record.date}>
+                    <dt>{record.date}</dt>
+                    <dd>{paragraphNodes}</dd>
+                </Fragment>
+            )
+        })
+        .reverse()
 
     return (
         <aside className="row no-border">

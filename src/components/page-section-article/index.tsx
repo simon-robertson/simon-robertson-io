@@ -6,7 +6,7 @@ type Props = {
     readonly description?: string
     readonly children: ReactNode
     readonly edge?: ReactNode
-    readonly tags?: string[]
+    readonly tags?: readonly string[]
 }
 
 export function PageSectionArticle({

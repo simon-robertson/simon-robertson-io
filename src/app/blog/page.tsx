@@ -2,7 +2,7 @@ import { PageContents } from "@/components/page-contents"
 import { PageHeader } from "@/components/page-header"
 import { PageSectionArticle } from "@/components/page-section-article"
 
-import { getPage, getPagesByGroup } from "@/network/database"
+import { fetchPageByPath, fetchPagesByGroup } from "@/system/data"
 
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -10,25 +10,27 @@ import { notFound } from "next/navigation"
 import { Fragment } from "react"
 
 export default async function Page() {
-    const page = await getPage("/blog")
+    const page = await fetchPageByPath("/blog")
 
     if (page === null) {
         notFound()
     }
 
-    const blogPages = await getPagesByGroup("blog", true)
-    const blogNodes = blogPages.map((record) => {
-        return (
-            <PageSectionArticle
-                key={record.id}
-                heading={record.title}
-                headingLink={record.path}
-                tags={record.keywords.split(",").map((value) => value.trim())}
-            >
-                <p>{record.description}</p>
-            </PageSectionArticle>
-        )
-    })
+    const blogPages = await fetchPagesByGroup("blog")
+    const blogNodes = blogPages
+        .map((record) => {
+            return (
+                <PageSectionArticle
+                    key={record.path}
+                    heading={record.title}
+                    headingLink={record.path}
+                    tags={record.keywords}
+                >
+                    <p>{record.description}</p>
+                </PageSectionArticle>
+            )
+        })
+        .reverse()
 
     return (
         <Fragment>
@@ -39,7 +41,7 @@ export default async function Page() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-    const page = await getPage("/blog")
+    const page = await fetchPageByPath("/blog")
 
     if (page === null) {
         notFound()
@@ -48,6 +50,6 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: page.title,
         description: page.description,
-        keywords: page.keywords,
+        keywords: page.keywords.join(","),
     }
 }
