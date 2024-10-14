@@ -3,7 +3,9 @@ import { PageContents } from "@/components/page-contents"
 import { PageHeader } from "@/components/page-header"
 import { PageSectionArticle } from "@/components/page-section-article"
 
-import { getPage, getPagesByGroup } from "@/network/database"
+import { getPagesByGroup } from "@/network/database"
+
+import { fetchPageByPath } from "@/system/data"
 
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -19,7 +21,7 @@ type Props = {
 export default async function Page({ params }: Props) {
     const path = "/blog/" + params.slug
 
-    const page = await getPage(path)
+    const page = await fetchPageByPath(path)
 
     if (page === null) {
         notFound()
@@ -29,7 +31,7 @@ export default async function Page({ params }: Props) {
         <Fragment>
             <PageHeader heading={page.title} />
             <PageContents>
-                <PageSectionArticle tags={page.keywords.split(",").map((value) => value.trim())}>
+                <PageSectionArticle tags={page.keywords}>
                     <Markdown source={path} />
                 </PageSectionArticle>
             </PageContents>
@@ -38,7 +40,7 @@ export default async function Page({ params }: Props) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const page = await getPage("/blog/" + params.slug)
+    const page = await fetchPageByPath("/blog/" + params.slug)
 
     if (page === null) {
         notFound()
@@ -47,12 +49,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: page.title,
         description: page.description,
-        keywords: page.keywords,
+        keywords: page.keywords.join(","),
     }
 }
 
 export async function generateStaticParams(): Promise<Props["params"][]> {
-    const pages = await getPagesByGroup("blog", true)
+    const pages = await getPagesByGroup("blog")
 
     return pages.map((page) => {
         return {

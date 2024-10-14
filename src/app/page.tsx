@@ -5,7 +5,7 @@ import { IntroductionSection } from "@/components/sections/introduction-section"
 import { PreferencesSection } from "@/components/sections/preferences-section"
 import { RecommendationsSection } from "@/components/sections/recommendations-section"
 
-import { getPage } from "@/network/database"
+import { fetchPageByPath } from "@/system/data"
 
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -26,7 +26,7 @@ export default function Page() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-    const page = await getPage("/")
+    const page = await fetchPageByPath("/")
 
     if (page === null) {
         notFound()
@@ -35,6 +35,6 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: page.title,
         description: page.description,
-        keywords: page.keywords,
+        keywords: page.keywords.join(","),
     }
 }
