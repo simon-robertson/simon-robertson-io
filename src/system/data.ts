@@ -1,3 +1,5 @@
+import { IS_PRODUCTION } from "@/environment"
+
 import nodeFs from "node:fs"
 
 import nodePath from "node:path"
@@ -33,11 +35,9 @@ const cache = new Map<string, unknown>()
  * Loads a file from the root `data` directory.
  */
 async function fetchData<T>(path: string): Promise<T> {
-    if (cache.has(path)) {
+    if (IS_PRODUCTION && cache.has(path)) {
         return cache.get(path) as T
     }
-
-    console.debug("LOADING", path)
 
     const filePath = nodePath.join(process.cwd(), "data", path)
     const fileContents = nodeFs.readFileSync(filePath)
