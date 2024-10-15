@@ -16,8 +16,7 @@ With the use of the OpenAI API decided I now had to work out how to actually int
 
 ## The Shift API
 
-The Shift API is powered by PHP and Laravel. The service provider application and the customer business dashboard both use the Shift API albeit having their own
-endpoints, so it was obvious the solution for translation support would be within the API. All of the endpoints (routes) defined in Laravel can have their HTTP requests and responses flow through custom middleware, so I decided this had to be the solution; create a new middleware that could translate the content within HTTP responses before the response reached the client.
+The Shift API is powered by PHP and Laravel. The service provider application and the customer business dashboard both use the Shift API albeit having their own endpoints, so it was obvious the solution for translation support would be within the API. All of the endpoints (routes) defined in Laravel can have their HTTP requests and responses flow through custom middleware, so I knew this had to be the solution; create a new middleware that could translate the content within HTTP responses before the response reached the client.
 
 All text based content returned from Shift API endpoints is returned as a JSON encoded string, so I knew I could take advantage of this. The middleware that I created ended up looking something like this:
 
